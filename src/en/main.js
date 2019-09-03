@@ -6,6 +6,8 @@ import VectorSource from 'ol/source/Vector';
 import View from 'ol/View';
 import DragAndDrop from 'ol/interaction/DragAndDrop';
 import sync from 'ol-hashed';
+import Draw from 'ol/interaction/Draw'
+import GeometryType from 'ol/geom/GeometryType'
 
 
 const map = new Map({
@@ -27,10 +29,17 @@ const layer = new VectorLayer({
 // add Layer
 map.addLayer(layer);
 
-// aadd Interaction
+// add Interaction - drag and drop
 map.addInteraction(new DragAndDrop({
     source: source,
     formatConstructors: [GeoJSON]
+}));
+
+// add interaction : Drawing
+map.addInteraction(new Draw({
+    type: GeometryType.POLYGON, // 'Polygon'
+    // type: GeometryType.CIRCLE, // 'Circle'
+    source: source
 }));
 
 sync(map);
