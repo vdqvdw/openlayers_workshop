@@ -5,6 +5,8 @@ import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import View from 'ol/View';
 import DragAndDrop from 'ol/interaction/DragAndDrop';
+import sync from 'ol-hashed';
+
 
 const map = new Map({
     target: 'map-container',
@@ -31,7 +33,7 @@ map.addInteraction(new DragAndDrop({
     formatConstructors: [GeoJSON]
 }));
 
-
+sync(map);
 
 
 
